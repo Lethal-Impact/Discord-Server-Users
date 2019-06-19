@@ -16,9 +16,9 @@ async def get_server_count():
 
 async def update_count(count):
     all, online = count
-    await client.edit_channel(channel=client.get_channel(getenv(TOTAL)),
+    await client.edit_channel(channel=client.get_channel(getenv("TOTAL")),
                         name= "total ꞉ " + str(all))
-    await client.edit_channel(channel=client.get_channel(getenv(ONLINE)),
+    await client.edit_channel(channel=client.get_channel(getenv("ONLINE")),
                         name= "online ꞉ " + str(online))
 
 @client.event
@@ -37,4 +37,4 @@ async def on_member_update(before, after):
 async def on_ready():
     await update_count(await get_server_count())
 
-client.run(TOKEN)
+client.run(getenv("TOKEN"))
